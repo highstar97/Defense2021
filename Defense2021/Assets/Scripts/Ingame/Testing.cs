@@ -8,6 +8,6 @@ public class Testing : MonoBehaviour
     public GameObject ob1;
     public void TestClick()
     {
-        Destroy(ob1, 0);
+        ob1.transform.position = new Vector3(0, 0, 0);
     }
 }
