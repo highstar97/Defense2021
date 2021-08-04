@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage;
+   
+    void Update()
+    {
+        transform.Translate(Vector3.forward * 1f);
 
+    }
+    
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Floor")
-        {
-            Destroy(gameObject, 3);
-        }
-        else if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "OurTeam")
         {
             Destroy(gameObject);
         }
