@@ -2607,7 +2607,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1076527015
+--- !u!114 &1076527016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2616,7 +2616,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076527012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e265a73eda4b84cb8cdffe4bd86571, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cac7f3e71c0f4f4f846f788b1a83b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entitytime: 1
@@ -2962,7 +2962,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1076527015}
+      - m_Target: {fileID: 1076527016}
         m_MethodName: DieTest
         m_Mode: 1
         m_Arguments:
@@ -3562,7 +3562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f6cfd2c8647e54592039329a8b1aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ob1: {fileID: 1726439322}
 --- !u!1001 &1271307647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4619,7 +4618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1232761779}
+      - m_Target: {fileID: 1726439326}
         m_MethodName: TestClick
         m_Mode: 1
         m_Arguments:
@@ -4749,7 +4748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1076527015}
+      - m_Target: {fileID: 1076527016}
         m_MethodName: Move
         m_Mode: 1
         m_Arguments:
@@ -5005,10 +5004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e265a73eda4b84cb8cdffe4bd86571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entitytime: 1
-  pos_x: 0
-  pos_y: 0
-  pos_z: 1
 --- !u!54 &1726439325
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5025,6 +5020,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1726439326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726439322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbadc5df39cd341f4b9647f54fce7ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ob1: {fileID: 1726439322}
 --- !u!1 &1765968975
 GameObject:
   m_ObjectHideFlags: 0
