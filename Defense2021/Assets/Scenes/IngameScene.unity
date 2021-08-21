@@ -7216,6 +7216,7 @@ GameObject:
   - component: {fileID: 1232761776}
   - component: {fileID: 1232761775}
   - component: {fileID: 1232761779}
+  - component: {fileID: 1232761780}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7331,6 +7332,19 @@ MonoBehaviour:
   GoldsInfo: {fileID: 0}
   Enemy: {fileID: 2021039905}
   Enemydead: {fileID: 0}
+--- !u!114 &1232761780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232761774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a33f57a0985e045ade147fd91fd211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invisible: {fileID: 0}
 --- !u!1 &1243561714
 GameObject:
   m_ObjectHideFlags: 0
