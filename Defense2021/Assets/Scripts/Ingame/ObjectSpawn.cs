@@ -14,6 +14,7 @@ public class ObjectSpawn : MonoBehaviour
     public Text GoldsInfo;
     public GameObject Enemy;
     public GameObject Enemydead;
+    public int addgold = 5;
     public void SpawnEnemy()
     {
         setRoundinfo();
@@ -39,7 +40,7 @@ public class ObjectSpawn : MonoBehaviour
     void addGold()
     {
         setGoldinfo();
-        gold += 10;
+        gold += addgold;
 
 
     }
