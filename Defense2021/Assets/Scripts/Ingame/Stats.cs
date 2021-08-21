@@ -7,6 +7,7 @@ public class Stats : MonoBehaviour
     public float MaxHp;
     public float CurHp;
     public float ATK;
+    public float ATKspd;
     void Start()
     {
         CurHp = MaxHp;

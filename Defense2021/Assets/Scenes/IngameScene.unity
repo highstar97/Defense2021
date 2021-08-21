@@ -2393,6 +2393,7 @@ MonoBehaviour:
   MaxHp: 100
   CurHp: 0
   ATK: 1
+  ATKspd: 5
 --- !u!114 &470533899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10475,6 +10476,7 @@ MonoBehaviour:
   MaxHp: 100
   CurHp: 0
   ATK: 1
+  ATKspd: 1
 --- !u!1 &1905532878
 GameObject:
   m_ObjectHideFlags: 0

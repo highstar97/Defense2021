@@ -37,19 +37,20 @@ namespace Defense2021
         private void OnCollisionStay(Collision other)
         {
             Animator otherani;
-            Stats temp2;
+            Stats otherstat;
             otherani = other.gameObject.GetComponent<Animator>();
-            temp2 = other.gameObject.GetComponent<Stats>();
+            otherstat = other.gameObject.GetComponent<Stats>();
             if(otherani.GetBool("isCollision") && otherani.GetBool("isEnemy")&&check)
             {
                 check = false;
-                temp.CurHp -= temp2.ATK;
-                StartCoroutine(WaitForIt());
+                temp.CurHp -= otherstat.ATK;
+                StartCoroutine(WaitForIt(otherstat.ATKspd));
             }
         }
-        IEnumerator WaitForIt()
+        IEnumerator WaitForIt(float speed)
         {
-            yield return new WaitForSeconds(1.0f);
+            float spd = (float)1 / speed;
+            yield return new WaitForSeconds(spd);
             check = true;
         }
     }
