@@ -18,7 +18,7 @@ namespace Defense2021
         }
         void Update()
         {
-            if (temp.CurHp == 0)
+            if (temp.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
                 Destroy(this);
