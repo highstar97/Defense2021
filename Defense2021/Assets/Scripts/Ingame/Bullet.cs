@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public float speed;
-
+    Stats bulletstat;
+    void Awake()
+    {
+        bulletstat = GetComponent<Stats>();
+    }
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Enemy")

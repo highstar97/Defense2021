@@ -6,6 +6,7 @@ namespace Defense2021
 {
     public class Animating : MonoBehaviour
     {
+        public GameObject thisob;
         public Stats temp;
         Animator animator;
         bool check = true;
@@ -21,30 +22,50 @@ namespace Defense2021
             if (temp.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
-                Destroy(this);
+                
             }
         }
         void OnCollisionEnter(Collision collision)
         {
-            animator.SetBool("isCollision", true);
-            animator.SetBool("isEnemy", true);
+            if(collision.gameObject.tag != "Attack")
+            {
+                animator.SetBool("isCollision", true);
+                animator.SetBool("isEnemy", true);
+            }
+            else
+            {
+                Stats bulletatk;
+                bulletatk = collision.gameObject.GetComponent<Stats>();
+                temp.CurHp -= bulletatk.ATK;
+            }
+
         }
         void OnCollisionExit(Collision collision)
         {
-            animator.SetBool("isCollision", false);
-            animator.SetBool("isEnemy", false);
+            if(collision.gameObject.tag != "Attack")
+            {
+                animator.SetBool("isCollision", false);
+                animator.SetBool("isEnemy", false);
+            }
         }
         private void OnCollisionStay(Collision other)
         {
-            Animator otherani;
-            Stats otherstat;
-            otherani = other.gameObject.GetComponent<Animator>();
-            otherstat = other.gameObject.GetComponent<Stats>();
-            if(otherani.GetBool("isCollision") && otherani.GetBool("isEnemy")&&check)
+            if(other.gameObject.tag == "Attack")
             {
-                check = false;
-                temp.CurHp -= otherstat.ATK;
-                StartCoroutine(WaitForIt(otherstat.ATKspd));
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                Animator otherani;
+                Stats otherstat;
+                otherani = other.gameObject.GetComponent<Animator>();
+                otherstat = other.gameObject.GetComponent<Stats>();
+                if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
+                {
+                    check = false;
+                    temp.CurHp -= otherstat.ATK;
+                    StartCoroutine(WaitForIt(otherstat.ATKspd));
+                }
             }
         }
         IEnumerator WaitForIt(float speed)
