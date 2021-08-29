@@ -6,16 +6,17 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject bullet;
     public Transform pos;
-    public float cooltime;
+    public Stats spdstat;
     private float curtime;
-
     private RaycastHit hit;
     private int layerMask;
-
+    Vector3 pos2;
     // Start is called before the first frame update
     void Start()
     {
-        layerMask = 1 << 8;    
+        layerMask = 1 << 8;
+        pos2 = transform.position + new Vector3(0, 5f, 0);
+
     }
 
     // Update is called once per frame
@@ -23,15 +24,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if(curtime <= 0)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(pos2, transform.forward, out hit, Mathf.Infinity, layerMask))
             {
                 Instantiate(bullet, pos.position, transform.rotation);
             }
-            curtime = cooltime;
+            curtime = spdstat.ATKspd;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * 1000f, Color.red);
+            Debug.DrawRay(pos2, transform.forward * 1000f, Color.red); ;
         }
         curtime -= Time.deltaTime;
     }
