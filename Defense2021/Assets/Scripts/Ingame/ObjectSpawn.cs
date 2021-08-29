@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ObjectSpawn : MonoBehaviour
+/*public class ObjectSpawn : MonoBehaviour
 {
     public bool enableSpawn = false;
     public int round = 1;
@@ -26,7 +26,7 @@ public class ObjectSpawn : MonoBehaviour
                  GameObject enemy = (GameObject)Instantiate(Enemy, new Vector3(600f, 0f, row), Quaternion.identity);
                  row += 50f;
              }
-         }*/
+         }
         ++round;
         row += 50f;
     }
@@ -63,8 +63,4 @@ public class ObjectSpawn : MonoBehaviour
 
         //killUnit();
     }
-    void Update()
-    {
-
-    }
-}
+}*/

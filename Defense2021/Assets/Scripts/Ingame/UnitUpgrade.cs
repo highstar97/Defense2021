@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class UnitUpgrade : MonoBehaviour
 {
     public Button ArcherUpgradeButton;
+    public int ArcherLevel = 1;
     public int ArcherCost = 100;
     public Text ArcherCostinfo;
-    public int ArcherLevel = 1;
     public Text ArcherLevelinfo;
     public GameObject warningpanel;
-    ObjectSpawn obspawn;
-
+    GoldManager goldManager;
 
     public void ArcherUpgrade()
     {
@@ -22,10 +21,9 @@ public class UnitUpgrade : MonoBehaviour
     }
     public void AddArcherCost() 
     {
-        if (obspawn.gold >= ArcherCost)
+        if (goldManager.gold >= ArcherCost)
         {
-            
-            obspawn.gold -= ArcherCost;
+            goldManager.gold -= ArcherCost;
             ArcherLevel += 1;
             ArcherCost += 150;
             ArcherCostinfo.text = ArcherCost.ToString();
@@ -42,20 +40,12 @@ public class UnitUpgrade : MonoBehaviour
     {
         warningpanel.SetActive(false);
     }
-
-    // Start is called before the first frame update
     void Start()
     {
-        obspawn = GameObject.Find("Canvas").GetComponent<ObjectSpawn>();
+        goldManager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
         ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    { 
-        
     }
 }
