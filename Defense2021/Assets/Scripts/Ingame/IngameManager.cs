@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class IngameManager : MonoBehaviour
 {
+    public GameObject BackGroundPanel;
     public GameObject DictionaryMenu;
     public GameObject SettingMenu;
     public GameObject DirectorMenu;
@@ -12,28 +13,32 @@ public class IngameManager : MonoBehaviour
     public GameObject BuffStatus;
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && DirectorMenu.activeSelf == true){
-            DirectorMenu.SetActive(false);
+            CloseDirector();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && SettingMenu.activeSelf == true){
-            SettingMenu.SetActive(false);
+            CloseSetting();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && DictionaryMenu.activeSelf == true){
-            DictionaryMenu.SetActive(false);
+            CloseDictionary();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && LvupMenu.activeSelf == true){
-            LvupMenu.SetActive(false);
+            CloseLvup();
         }
     }
     public void OpenDictionary(){
+        BackGroundPanel.SetActive(true);
         DictionaryMenu.SetActive(true);
     }
     public void CloseDictionary(){
+        BackGroundPanel.SetActive(false);
         DictionaryMenu.SetActive(false);
     }
     public void OpenSetting(){
+        BackGroundPanel.SetActive(true);
         SettingMenu.SetActive(true);
     }
     public void CloseSetting(){
+        BackGroundPanel.SetActive(false);
         SettingMenu.SetActive(false);
     }
     public void OpenDirector(){
@@ -43,9 +48,11 @@ public class IngameManager : MonoBehaviour
         DirectorMenu.SetActive(false);
     }
     public void OpenLvup(){
+        BackGroundPanel.SetActive(true);
         LvupMenu.SetActive(true);
     }
     public void CloseLvup(){
+        BackGroundPanel.SetActive(false);
         LvupMenu.SetActive(false);
     }
     public void PushBuffButton(){

@@ -8,7 +8,6 @@ public class Central : MonoBehaviour
     public Transform invisible;
 
     List<Arrenger> arrengers;
-    // Start is called before the first frame update
     void Start()
     {
         arrengers = new List<Arrenger>();
@@ -18,7 +17,6 @@ public class Central : MonoBehaviour
         for (int i = 0; i < arrs.Length; i++)
         {
             arrengers.Add(arrs[i]);
-
         }
     }
 
