@@ -11521,7 +11521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906134022}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9e265a73eda4b84cb8cdffe4bd86571, type: 3}
   m_Name: 
@@ -11544,7 +11544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHp: 100
   CurHp: 0
-  ATK: 10
+  ATK: 1
   ATKspd: 1
 --- !u!114 &1906134027
 MonoBehaviour:
@@ -11567,7 +11567,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906134022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8995e618be0733841951062d849682f0, type: 3}
   m_Name: 
@@ -11896,7 +11896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHp: 100
   CurHp: 0
-  ATK: 1
+  ATK: 50
   ATKspd: 1
 --- !u!114 &2021039909
 MonoBehaviour:

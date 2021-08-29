@@ -26,6 +26,7 @@ public class Moving : MonoBehaviour
     }
     public void OnCollisionExit(Collision collision)
     {
+        Debug.Log("Collision End");
         isOkay = true;
     }
 }

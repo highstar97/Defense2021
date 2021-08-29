@@ -22,7 +22,7 @@ namespace Defense2021
             if (temp.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
-                
+                Destroy(thisob, 3.0f);
             }
         }
         void OnCollisionEnter(Collision collision)
