@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitUpgrade : MonoBehaviour
+public class LvupManager : MonoBehaviour
 {
     public Button ArcherUpgradeButton;
     public int ArcherLevel = 1;
     public int ArcherCost = 100;
     public Text ArcherCostinfo;
     public Text ArcherLevelinfo;
+    public Text NowMoney;
     public GameObject warningpanel;
     GoldManager goldManager;
 
@@ -46,6 +47,8 @@ public class UnitUpgrade : MonoBehaviour
         ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
-
+    }
+    void Update(){
+        NowMoney.GetComponent<Text>().text = "현재 돈 : " + goldManager.gold + " G";
     }
 }
