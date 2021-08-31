@@ -7,7 +7,7 @@ namespace Defense2021
     public class Animating : MonoBehaviour
     {
         public GameObject thisob;
-        public Stats UnitStat;
+        public Stats temp;
         Animator animator;
         bool check = true;
         void Awake()
@@ -19,7 +19,7 @@ namespace Defense2021
         }
         void Update()
         {
-            if (UnitStat.CurHp <= 0)
+            if (temp.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
                 Destroy(thisob, 3.0f);
@@ -32,11 +32,11 @@ namespace Defense2021
                 animator.SetBool("isCollision", true);
                 animator.SetBool("isEnemy", true);
             }
-            else if(collision.gameObject.tag != UnitStat.gameObject.tag)
+            else
             {
                 Stats bulletatk;
                 bulletatk = collision.gameObject.GetComponent<Stats>();
-                UnitStat.CurHp -= bulletatk.ATK;
+                temp.CurHp -= bulletatk.ATK;
             }
 
         }
@@ -63,7 +63,7 @@ namespace Defense2021
                 if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
                 {
                     check = false;
-                    UnitStat.CurHp -= otherstat.ATK;
+                    temp.CurHp -= otherstat.ATK;
                     StartCoroutine(WaitForIt(otherstat.ATKspd));
                 }
             }
