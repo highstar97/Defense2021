@@ -11,7 +11,7 @@ public class GoldManager : MonoBehaviour
     public GameObject text_gold;
 
     void AddGold(){
-        int increase = 1;
+        int increase = 100;
         if(GameObject.Find("Buff Manager").GetComponent<BuffManager>().IsActive){
             increase *= 5;
         }
