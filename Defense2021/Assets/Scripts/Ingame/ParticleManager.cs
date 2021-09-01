@@ -7,7 +7,11 @@ public class ParticleManager : MonoBehaviour
 {
     void Update(){
         if(Input.GetMouseButtonDown(0)){
-            this.transform.position = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)){
+                this.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            }
             GetComponent<ParticleSystem>().Play();
         }
     }
