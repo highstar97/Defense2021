@@ -6,12 +6,13 @@ namespace Defense2021
 {
     public class Animating : MonoBehaviour
     {
-        public GameObject thisob;
-        public Stats temp;
+        public GameObject ThisUnit;
+        Stats UnitStat;
         Animator animator;
         bool check = true;
         void Awake()
         {
+            UnitStat = GetComponent<Stats>();
             animator = GetComponent<Animator>();
             animator.SetBool("isDie", false);
             animator.SetBool("isCollision", false);
@@ -19,15 +20,15 @@ namespace Defense2021
         }
         void Update()
         {
-            if (temp.CurHp <= 0)
+            if (UnitStat.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
-                Destroy(thisob, 3.0f);
+                Destroy(ThisUnit, 3.0f);
             }
         }
         void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.tag != "Attack")
+            if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
             {
                 animator.SetBool("isCollision", true);
                 animator.SetBool("isEnemy", true);
@@ -36,7 +37,7 @@ namespace Defense2021
             {
                 Stats bulletatk;
                 bulletatk = collision.gameObject.GetComponent<Stats>();
-                temp.CurHp -= bulletatk.ATK;
+                UnitStat.CurHp -= bulletatk.ATK;
             }
 
         }
@@ -63,7 +64,7 @@ namespace Defense2021
                 if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
                 {
                     check = false;
-                    temp.CurHp -= otherstat.ATK;
+                    UnitStat.CurHp -= otherstat.ATK;
                     StartCoroutine(WaitForIt(otherstat.ATKspd));
                 }
             }

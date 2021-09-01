@@ -8,6 +8,11 @@ public class Moving : MonoBehaviour
     // Update is called once per frame
     private bool isOkay = true;
     public float entitytime, pos_x, pos_y, pos_z;
+    public GameObject thisunit;
+    void Awake()
+    {
+        Debug.Log(thisunit.gameObject.tag);
+    }
     void Update()
     {
         if(isOkay)
@@ -20,7 +25,11 @@ public class Moving : MonoBehaviour
     {
         if(collision.gameObject.tag != "Attack")
         {
-            isOkay = false;
+            if(thisunit.gameObject.tag != collision.gameObject.tag)
+            {
+                isOkay = false;
+            }
+            
         }
        
     }
