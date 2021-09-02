@@ -30,7 +30,10 @@ namespace Defense2021
         }
         void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
+            animator.SetBool("isCollision", true);
+            animator.SetBool("isEnemy", true);
+
+            /*if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
             {
                 animator.SetBool("isCollision", true);
                 animator.SetBool("isEnemy", true);
@@ -40,7 +43,7 @@ namespace Defense2021
                 Stats bulletatk;
                 bulletatk = collision.gameObject.GetComponent<Stats>();
                 UnitStat.CurHp -= bulletatk.ATK;
-            }
+            }*/
 
         }
         void OnCollisionExit(Collision collision)
@@ -50,23 +53,17 @@ namespace Defense2021
         }
         private void OnCollisionStay(Collision other)
         {
-            if(other.gameObject.tag == "Attack")
+            Animator otherani;
+            Stats otherstat;
+            otherani = other.gameObject.GetComponent<Animator>();
+            otherstat = other.gameObject.GetComponent<Stats>();
+            if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
             {
-                Destroy(other.gameObject);
+                check = false;
+                UnitStat.CurHp -= otherstat.ATK;
+                StartCoroutine(WaitForIt(otherstat.ATKspd));
             }
-            else
-            {
-                Animator otherani;
-                Stats otherstat;
-                otherani = other.gameObject.GetComponent<Animator>();
-                otherstat = other.gameObject.GetComponent<Stats>();
-                if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
-                {
-                    check = false;
-                    UnitStat.CurHp -= otherstat.ATK;
-                    StartCoroutine(WaitForIt(otherstat.ATKspd));
-                }
-            }
+
         }
         IEnumerator WaitForIt(float speed)
         {
