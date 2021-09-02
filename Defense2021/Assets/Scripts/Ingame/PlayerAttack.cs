@@ -12,11 +12,11 @@ public class PlayerAttack : MonoBehaviour
     private int layerMask;
     Vector3 pos2;
     // Start is called before the first frame update
+
     void Start()
     {
         layerMask = 1 << 8;
         pos2 = transform.position + new Vector3(0, 5f, 0);
-
     }
 
     // Update is called once per frame

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class IngameManager : MonoBehaviour
 {
     public GameObject BackGroundPanel;
+    public GameObject EventMenu;
     public GameObject DictionaryMenu;
     public GameObject SettingMenu;
     public GameObject DirectorMenu;
     public GameObject LvupMenu;
+    public GameObject RelicMenu;
     public GameObject BuffStatus;
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && DirectorMenu.activeSelf == true){
@@ -24,6 +26,16 @@ public class IngameManager : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Escape) && LvupMenu.activeSelf == true){
             CloseLvup();
         }
+        else if(Input.GetKeyDown(KeyCode.Escape) && EventMenu.activeSelf == true){
+            CloseEvent();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && RelicMenu.activeSelf == true){
+            CloseRelic();
+        }
+    }
+    public void CloseEvent(){
+        BackGroundPanel.SetActive(false);
+        EventMenu.SetActive(false);
     }
     public void OpenDictionary(){
         BackGroundPanel.SetActive(true);
@@ -54,6 +66,10 @@ public class IngameManager : MonoBehaviour
     public void CloseLvup(){
         BackGroundPanel.SetActive(false);
         LvupMenu.SetActive(false);
+    }
+    public void CloseRelic(){
+        BackGroundPanel.SetActive(false);
+        RelicMenu.SetActive(false);
     }
     public void PushBuffButton(){
         if(BuffStatus.activeSelf == false){
