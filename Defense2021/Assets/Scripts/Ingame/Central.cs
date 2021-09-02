@@ -57,12 +57,10 @@ public class Central : MonoBehaviour
 
     void BeginDrag(Transform unit)
     {
-        Debug.Log("BeginDrag:" + unit.name);
         SwapUnit(invisible, unit);
     }
     void Drag(Transform unit)
     {
-        Debug.Log("Drag:" + unit.name);
         var whichArrangerCard = arrengers.Find(t => ContainPos(t.transform as RectTransform, unit.position));
         if (whichArrangerCard == null)
         { }
@@ -78,7 +76,6 @@ public class Central : MonoBehaviour
     }
     void EndDrag(Transform unit)
     {
-        Debug.Log("EndDrag:" + unit.name);
         SwapUnit(invisible, unit);
     }
 }
