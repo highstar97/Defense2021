@@ -14,28 +14,33 @@ public class LvupManager : MonoBehaviour
     public GameObject warningpanel;
     GoldManager goldManager;
 
-    public void ArcherUpgrade()
-    {
+    public void ArcherUpgrade(){
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
 
     }
-    public void AddArcherCost() 
-    {
-        if (goldManager.gold >= ArcherCost)
-        {
+    public void AddArcherCost(){
+        if (goldManager.gold >= ArcherCost){
             goldManager.gold -= ArcherCost;
             ArcherLevel += 1;
             ArcherCost += 150;
             ArcherCostinfo.text = ArcherCost.ToString();
             ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         }
-        else
-        {
-            warningpanel.SetActive(true);
-            Invoke("enablewarning", 1);
+        else{
+            OpenWarning();
         }
-
+    }
+    public void OpenWarning(){
+        if(warningpanel.activeSelf == false){
+            warningpanel.SetActive(true);
+            Invoke("enablewarning",1f);
+        }
+        else{
+            CancelInvoke("enablewarning");
+            warningpanel.SetActive(true);
+            Invoke("enablewarning",1f);
+        }
     }
     public void enablewarning()
     {
