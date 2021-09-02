@@ -41,3 +41,5 @@ public class GoldManager : MonoBehaviour
             text_gold.GetComponent<Text>().text = "Gold : " + "<color=#0000ff>" + gold.ToString()+ "</color>";
     }
 }
+
+
