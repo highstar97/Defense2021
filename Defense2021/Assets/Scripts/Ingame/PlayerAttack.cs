@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     private int layerMask;
     Vector3 pos2;
     // Start is called before the first frame update
+
     void Start()
     {
         layerMask = 1 << 8;
@@ -25,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Physics.Raycast(pos2, transform.forward, out hit, Mathf.Infinity, layerMask))
             {
-                Debug.Log("signal2");
                 Instantiate(bullet, pos.position, transform.rotation);
             }
             curtime = spdstat.ATKspd;

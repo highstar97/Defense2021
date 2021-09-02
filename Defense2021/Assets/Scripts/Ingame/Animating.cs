@@ -24,6 +24,8 @@ namespace Defense2021
             {
                 animator.SetBool("isDie", true);
                 Destroy(ThisUnit, 3.0f);
+                animator.SetBool("isCollision", false);
+                animator.SetBool("isEnemy", false);
             }
         }
         void OnCollisionEnter(Collision collision)
@@ -43,11 +45,8 @@ namespace Defense2021
         }
         void OnCollisionExit(Collision collision)
         {
-            if(collision.gameObject.tag != "Attack")
-            {
-                animator.SetBool("isCollision", false);
-                animator.SetBool("isEnemy", false);
-            }
+            animator.SetBool("isCollision", false);
+            animator.SetBool("isEnemy", false);
         }
         private void OnCollisionStay(Collision other)
         {
