@@ -198,4 +198,4 @@ MonoBehaviour:
   MaxHp: 0
   CurHp: 0
   ATK: 10
-  ATKspd: 0
+  ATKspd: 10

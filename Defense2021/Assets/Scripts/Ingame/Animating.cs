@@ -24,16 +24,15 @@ namespace Defense2021
             {
                 animator.SetBool("isDie", true);
                 Destroy(ThisUnit, 3.0f);
-                animator.SetBool("isCollision", false);
-                animator.SetBool("isEnemy", false);
             }
+            
         }
         void OnCollisionEnter(Collision collision)
         {
             animator.SetBool("isCollision", true);
             animator.SetBool("isEnemy", true);
 
-            /*if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
+            if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
             {
                 animator.SetBool("isCollision", true);
                 animator.SetBool("isEnemy", true);
@@ -43,13 +42,8 @@ namespace Defense2021
                 Stats bulletatk;
                 bulletatk = collision.gameObject.GetComponent<Stats>();
                 UnitStat.CurHp -= bulletatk.ATK;
-            }*/
+            }
 
-        }
-        void OnCollisionExit(Collision collision)
-        {
-            animator.SetBool("isCollision", false);
-            animator.SetBool("isEnemy", false);
         }
         private void OnCollisionStay(Collision other)
         {
@@ -57,13 +51,23 @@ namespace Defense2021
             Stats otherstat;
             otherani = other.gameObject.GetComponent<Animator>();
             otherstat = other.gameObject.GetComponent<Stats>();
-            if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
+            if(otherani.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+            {
+                check = false;
+                UnitStat.CurHp -= otherstat.ATK;
+                
+            }
+            /*if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
             {
                 check = false;
                 UnitStat.CurHp -= otherstat.ATK;
                 StartCoroutine(WaitForIt(otherstat.ATKspd));
+            }*/
+            if (otherstat.CurHp <= 0)
+            {
+                animator.SetBool("isCollision", false);
+                animator.SetBool("isEnemy", false);
             }
-
         }
         IEnumerator WaitForIt(float speed)
         {

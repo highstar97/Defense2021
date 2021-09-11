@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     {
         layerMask = 1 << 8;
         pos2 = transform.position + new Vector3(0, 5f, 0);
+
     }
 
     // Update is called once per frame
@@ -24,8 +25,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if(curtime <= 0)
         {
+            
             if (Physics.Raycast(pos2, transform.forward, out hit, Mathf.Infinity, layerMask))
             {
+                Debug.Log("check");
                 Instantiate(bullet, pos.position, transform.rotation);
             }
             curtime = spdstat.ATKspd;
