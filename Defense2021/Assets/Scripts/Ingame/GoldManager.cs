@@ -7,14 +7,15 @@ public class GoldManager : MonoBehaviour
 {
     float span = 0.1f;
     float delta = 0;
-    public int gold = 0;
+    public float gold = 0;
     public GameObject text_gold;
     public int GoldColor = 0;
+    public float Enemyprice = 300;
     RelicsManager relicsmanager;
 
 
     public void AddGold(){
-        int increase = 1;
+        float increase = 1;
         if (GameObject.Find("Buff Manager").GetComponent<BuffManager>().IsActive){
             increase *= 5;
         }

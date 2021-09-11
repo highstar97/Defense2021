@@ -8,14 +8,26 @@ public class RelicsManager : MonoBehaviour
 
     public GameObject GoldRelic;
     public GameObject SwordRelic;
+    public GameObject ShieldRelic;
     public GameObject AppleRelic;
+    public GameObject BoomerangRelic;
+    public GameObject TicketRelic;
+    public Button StarRelic;
     Stats stats;
     GoldManager goldmanager;
     public bool Goldset = false;
     public bool Swordset = false;
+    public bool Shieldset = false;
     public bool Appleset = false;
+    public bool Boomerangset = false;
+    public bool Ticketset = false;
+    public bool Starset = false;
+  
+    public void Regeneration()
+    {
+        stats.CurHp += 5;
 
-
+    }
     public void GoldRelicEnable()
     {
         if (GoldRelic.activeSelf == true && Goldset == false)
@@ -33,14 +45,29 @@ public class RelicsManager : MonoBehaviour
     {
         if (AppleRelic.activeSelf == true && Appleset == false)
         {
-
-            
+            InvokeRepeating("Regeneration", 0, 1);
+            Appleset = true;
         }
         else if (AppleRelic.activeSelf == false && Appleset == true)
         {
-           
+            CancelInvoke("Regeneration");
+            Appleset = false;
         }
     }
+    public void ShieldRelicEnable()
+    {
+        if (ShieldRelic.activeSelf == true && Shieldset == false)
+        {
+            stats.Armor += 50;
+            Shieldset = true;
+        }
+        else if (ShieldRelic.activeSelf == false && Shieldset == true)
+        {
+            stats.Armor -= 50;
+            Shieldset = false;
+        }
+    }
+
 
     public void SwordRelicEnable() 
     {
@@ -56,14 +83,48 @@ public class RelicsManager : MonoBehaviour
         }
 
     }
+    public void BoomerangEnable()
+    {
+        if (BoomerangRelic.activeSelf == true && Boomerangset == false)
+        {
+            stats.ATKspd*=1.2f;
+            Boomerangset = true;
+        }
+        else if (BoomerangRelic.activeSelf == false && Boomerangset == true)
+        {
+            stats.ATKspd /= 1.2f;
+            Boomerangset = false;
+        }
+
+    }
+    public void StarRelicActive() 
+    {
+        
+    
+    
+    }
+
+    public void TicketRelicEnable()
+    {
+        if (TicketRelic.activeSelf == true && Ticketset == false)
+        {
+            goldmanager.Enemyprice *= 0.8f;
+            Ticketset = true;
+        }
+        else if (TicketRelic.activeSelf == false && Ticketset == true)
+        {
+            goldmanager.Enemyprice /= 0.8f;
+            Ticketset = false;
+        }
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
         goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
-        stats = GameObject.Find("Enemy").GetComponent<Stats>();
-
+        stats = GameObject.Find("OurTeam").GetComponent<Stats>();
+        goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
 
     }
 
@@ -72,5 +133,8 @@ public class RelicsManager : MonoBehaviour
     {
         GoldRelicEnable();
         SwordRelicEnable();
+        AppleRelicEnable();
+        BoomerangEnable();
+        TicketRelicEnable();
     }
 }

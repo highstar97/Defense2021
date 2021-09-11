@@ -60,7 +60,7 @@ namespace Defense2021
             if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
             {
                 check = false;
-                UnitStat.CurHp -= otherstat.ATK;
+                UnitStat.CurHp -= (otherstat.ATK*((100-otherstat.Armor)/100));
                 StartCoroutine(WaitForIt(otherstat.ATKspd));
             }
 
