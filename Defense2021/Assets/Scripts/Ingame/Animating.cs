@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Defense2021
 {
@@ -10,6 +11,8 @@ namespace Defense2021
         private bool ctrg = true;
         Stats UnitStat;
         Animator animator;
+        public GameObject HealthBar;
+        Image barimg;
         bool check;
         void Awake()
         {
@@ -18,9 +21,11 @@ namespace Defense2021
             animator.SetBool("isDie", false);
             animator.SetBool("isCollision", false);
             animator.SetBool("isEnemy", false);
+            
         }
         void Update()
         {
+            
             if (UnitStat.CurHp <= 0)
             {
                 animator.SetBool("isDie", true);
@@ -66,7 +71,9 @@ namespace Defense2021
                     Debug.Log("Hit");
                     
                     UnitStat.CurHp -= otherstat.ATK;
+                    HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
                     StartCoroutine(WaitForIt(otherstat.ATKspd));
+                   
                     ctrg = true;
                 }
                 

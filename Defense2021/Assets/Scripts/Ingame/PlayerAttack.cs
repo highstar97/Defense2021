@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         layerMask = 1 << 8;
-        pos2 = transform.position + new Vector3(0, 5f, 0);
+        pos2 = transform.position + new Vector3(0, 10f, 0);
 
     }
 
@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if(curtime <= 0)
         {
-            
+            Debug.Log("Check2");
             if (Physics.Raycast(pos2, transform.forward, out hit, Mathf.Infinity, layerMask))
             {
                 Debug.Log("check");
@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(pos2, transform.forward * 1000f, Color.red); ;
+            Debug.DrawRay(pos2, transform.forward * 1000f, Color.red);
         }
         curtime -= Time.deltaTime;
     }
