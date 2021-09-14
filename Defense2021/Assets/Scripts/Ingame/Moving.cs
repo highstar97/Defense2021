@@ -28,7 +28,6 @@ public class Moving : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision start");
         isOkay = false;
        
     }
@@ -38,7 +37,6 @@ public class Moving : MonoBehaviour
         collisionstat = collision.gameObject.GetComponent<Stats>();
         if (collisionstat.CurHp <= 0)
         {
-            Debug.Log("Collision End");
             isOkay = true;
         }
     }

@@ -7,9 +7,10 @@ namespace Defense2021
     public class Animating : MonoBehaviour
     {
         public GameObject ThisUnit;
+        private bool ctrg = true;
         Stats UnitStat;
         Animator animator;
-        bool check = true;
+        bool check;
         void Awake()
         {
             UnitStat = GetComponent<Stats>();
@@ -45,28 +46,33 @@ namespace Defense2021
             }
 
         }
-        private void OnCollisionStay(Collision other)
+        void OnCollisionStay(Collision other)
         {
-            Animator otherani;
-            Stats otherstat;
-            otherani = other.gameObject.GetComponent<Animator>();
-            otherstat = other.gameObject.GetComponent<Stats>();
-            if(otherani.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+            if(ctrg)
             {
+                Animator otherani;
+                Stats otherstat;
+                otherani = other.gameObject.GetComponent<Animator>();
+                otherstat = other.gameObject.GetComponent<Stats>();
+                ctrg = false;
                 check = false;
-                UnitStat.CurHp -= otherstat.ATK;
+                if (otherstat.CurHp <= 0)
+                {
+                    animator.SetBool("isCollision", false);
+                    animator.SetBool("isEnemy", false);
+                }
+                if (otherani.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+                {
+                    Debug.Log("Hit");
+                    
+                    UnitStat.CurHp -= otherstat.ATK;
+                    StartCoroutine(WaitForIt(otherstat.ATKspd));
+                    ctrg = true;
+                }
                 
-            }
-            /*if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
-            {
-                check = false;
-                UnitStat.CurHp -= otherstat.ATK;
-                StartCoroutine(WaitForIt(otherstat.ATKspd));
-            }*/
-            if (otherstat.CurHp <= 0)
-            {
-                animator.SetBool("isCollision", false);
-                animator.SetBool("isEnemy", false);
+                
+
+                Debug.Log("Collsion");
             }
         }
         IEnumerator WaitForIt(float speed)
