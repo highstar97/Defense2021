@@ -9,12 +9,15 @@ public class Stats : MonoBehaviour
     public float ATK;
     public float ATKspd;
     public float Armor;
+    public bool invincible=false;
 
     public void MaxRule()
     {
-        if (MaxHp < CurHp)
+        if (MaxHp < CurHp && invincible == false)
             CurHp = MaxHp;
-        if (Armor >100||Armor<0)
+        else if (invincible == true)
+            CurHp = 10000000f;
+            if (Armor >100||Armor<0)
             Armor = 100;
     }
 

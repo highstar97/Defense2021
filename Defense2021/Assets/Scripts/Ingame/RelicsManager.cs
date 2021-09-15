@@ -12,6 +12,7 @@ public class RelicsManager : MonoBehaviour
     public GameObject AppleRelic;
     public GameObject BoomerangRelic;
     public GameObject TicketRelic;
+    public GameObject StarRelicActiveAnimation;
     public Button StarRelic;
     Stats stats;
     GoldManager goldmanager;
@@ -22,6 +23,9 @@ public class RelicsManager : MonoBehaviour
     public bool Boomerangset = false;
     public bool Ticketset = false;
     public bool Starset = false;
+    public bool CanUse = true;
+    public bool IsActive = false;
+    public float tempHp;
   
     public void Regeneration()
     {
@@ -99,9 +103,39 @@ public class RelicsManager : MonoBehaviour
     }
     public void StarRelicActive() 
     {
-        
-    
-    
+       
+   
+        if (CanUse && IsActive == false)
+        {
+            StarRelicActiveAnimation.SetActive(true);
+            IsActive = true;
+            tempHp = stats.CurHp;
+            stats.invincible = true;
+            Invoke("DisableStarRelic", 5f);
+        }
+    }
+
+    public void DisableStarRelic()
+    {
+        stats.invincible = false;
+        stats.CurHp = tempHp;
+        StarRelicActiveAnimation.SetActive(false);
+        IsActive = false;
+        CanUse = false;
+        StarRelic.transform.GetChild(0).gameObject.SetActive(true);
+        InvokeRepeating("CoolTime", Time.deltaTime, Time.deltaTime);
+    }
+
+    public void CoolTime()
+    {
+        if (StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount == 0)
+        {
+            StarRelic.transform.GetChild(0).gameObject.SetActive(false);
+            StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount = 1;
+            CancelInvoke("CoolTime");
+            CanUse = true;
+        }
+        StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.1f * Time.deltaTime;
     }
 
     public void TicketRelicEnable()
