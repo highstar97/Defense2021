@@ -21105,6 +21105,11 @@ PrefabInstance:
       propertyPath: ATK
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3137216058117666095, guid: 9cabb479d47504dddb601bc2b87b1b76,
+        type: 3}
+      propertyPath: ATKspd
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3137388802065661673, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
       propertyPath: m_Layer

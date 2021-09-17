@@ -11,16 +11,21 @@ namespace Defense2021
         Stats UnitStat;
         Animator animator;
         public GameObject HealthBar;
-        float anitime;
+        //float anitime;
+        float unitspd;
         bool check = true;
         void Awake()
         {
+            
             UnitStat = GetComponent<Stats>();
             animator = GetComponent<Animator>();
+
+            unitspd = (float)1 / UnitStat.ATKspd;
+
             animator.SetBool("isDie", false);
             animator.SetBool("isCollision", false);
             animator.SetBool("isEnemy", false);
-            
+            animator.SetFloat("Speed", UnitStat.ATKspd);
         }
         void Update()
         {
@@ -77,14 +82,15 @@ namespace Defense2021
                 UnitStat.CurHp -= otherstat.ATK;
                 HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
                 check = false;
-                StartCoroutine(WaitForIt(otherstat.ATKspd));
+                StartCoroutine(WaitForIt());
             }
 
         }
 
-        IEnumerator WaitForIt(float spd)
+        IEnumerator WaitForIt()
         {
-            yield return new WaitForSeconds(spd);
+
+            yield return new WaitForSeconds(unitspd);
             check = true;
         }
     }
