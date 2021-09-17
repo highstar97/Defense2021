@@ -28,7 +28,10 @@ public class Moving : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        isOkay = false;
+        if(collision.gameObject.tag != "Attack")
+        {
+            isOkay = false;
+        }
        
     }
     private void OnCollisionStay(Collision collision)
