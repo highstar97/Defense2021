@@ -12,10 +12,16 @@ public class RelicsManager : MonoBehaviour
     public GameObject AppleRelic;
     public GameObject BoomerangRelic;
     public GameObject TicketRelic;
+    public GameObject BookRelic;
+    public GameObject ClockRelic;
+    public GameObject ThrowingStarRelic;
     public GameObject StarRelicActiveAnimation;
+    public GameObject DragonballRelic;
     public Button StarRelic;
+    public Button PotionRelic;
     Stats stats;
     GoldManager goldmanager;
+    LvupManager lvmanager;
     public bool Goldset = false;
     public bool Swordset = false;
     public bool Shieldset = false;
@@ -23,8 +29,13 @@ public class RelicsManager : MonoBehaviour
     public bool Boomerangset = false;
     public bool Ticketset = false;
     public bool Starset = false;
+    public bool Bookset = false;
+    public bool ThrowingStarset = false;
+    public bool Dragonballset = false;
     public bool CanUse = true;
     public bool IsActive = false;
+    public bool CanUse2 = true;
+    public bool IsActive2 = false;
     public float tempHp;
   
     public void Regeneration()
@@ -91,16 +102,61 @@ public class RelicsManager : MonoBehaviour
     {
         if (BoomerangRelic.activeSelf == true && Boomerangset == false)
         {
-            stats.ATKspd*=1.2f;
+            stats.ATKspd*=1.5f;
             Boomerangset = true;
         }
         else if (BoomerangRelic.activeSelf == false && Boomerangset == true)
         {
-            stats.ATKspd /= 1.2f;
+            stats.ATKspd /= 1.5f;
             Boomerangset = false;
         }
 
     }
+    public void BookEnable()
+    {
+        if (BookRelic.activeSelf == true && Bookset == false)
+        {
+            lvmanager.ArcherCost *= 0.8f;
+            Bookset = true;
+        }
+        else if (BookRelic.activeSelf == false && Bookset == true)
+        {
+            lvmanager.ArcherCost /= 0.8f;
+            Bookset = false;
+        }
+
+    }
+    public void DragonballRelicEnable()
+    {
+        if (DragonballRelic.activeSelf == true && Dragonballset == false)
+        {
+            stats.MaxHp *= 1.2f;
+            stats.CurHp = stats.MaxHp;
+            Dragonballset = true;
+        }
+        else if (DragonballRelic.activeSelf == false && Dragonballset == true)
+        {
+            stats.MaxHp /= 1.2f;
+            Dragonballset = false;
+        }
+
+    }
+    public void ThrowingStarEnable()
+    {
+        if (ThrowingStarRelic.activeSelf == true && ThrowingStarset == false)
+        {
+            stats.ATKspd *= 1.2f;
+            stats.ATK += 10f;
+            ThrowingStarset = true;
+        }
+        else if (ThrowingStarRelic.activeSelf == false && ThrowingStarset == true)
+        {
+            stats.ATKspd /= 1.2f;
+            stats.ATK -= 10f;
+            ThrowingStarset = false;
+        }
+    }
+
     public void StarRelicActive() 
     {
        
@@ -135,9 +191,45 @@ public class RelicsManager : MonoBehaviour
             CancelInvoke("CoolTime");
             CanUse = true;
         }
-        StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.1f * Time.deltaTime;
+        if (ClockRelic.activeSelf == true)
+            StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.2f * Time.deltaTime;
+        else
+            StarRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.1f * Time.deltaTime;
+    }
+    public void PotionRelicActive()
+    {
+
+
+        if (CanUse2 && IsActive2 == false)
+        {
+            IsActive2 = true;
+            stats.CurHp += 300;
+            Invoke("DisablePotionRelic", 0f);
+        }
     }
 
+    public void DisablePotionRelic()
+    {
+        IsActive2 = false;
+        CanUse2 = false;
+        PotionRelic.transform.GetChild(0).gameObject.SetActive(true);
+        InvokeRepeating("CoolTime2", Time.deltaTime, Time.deltaTime);
+    }
+
+    public void CoolTime2()
+    {
+        if (PotionRelic.transform.GetChild(0).GetComponent<Image>().fillAmount == 0)
+        {
+            PotionRelic.transform.GetChild(0).gameObject.SetActive(false);
+            PotionRelic.transform.GetChild(0).GetComponent<Image>().fillAmount = 1;
+            CancelInvoke("CoolTime2");
+            CanUse2 = true;
+        }
+        if (ClockRelic.activeSelf == true)
+        { PotionRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.2f * Time.deltaTime; }
+        else
+        PotionRelic.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.1f * Time.deltaTime;
+    }
     public void TicketRelicEnable()
     {
         if (TicketRelic.activeSelf == true && Ticketset == false)
@@ -158,17 +250,22 @@ public class RelicsManager : MonoBehaviour
     {
         goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
         stats = GameObject.Find("OurTeam").GetComponent<Stats>();
-        goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
+        lvmanager = GameObject.Find("Lv up Manager").GetComponent<LvupManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        DragonballRelicEnable();
+        //ThrowingStarEnable();
         GoldRelicEnable();
         SwordRelicEnable();
         AppleRelicEnable();
         BoomerangEnable();
         TicketRelicEnable();
+        BookEnable();
+        ThrowingStarEnable();
+        
     }
 }

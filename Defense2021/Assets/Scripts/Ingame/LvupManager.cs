@@ -7,12 +7,13 @@ public class LvupManager : MonoBehaviour
 {
     public Button ArcherUpgradeButton;
     public int ArcherLevel = 1;
-    public int ArcherCost = 100;
+    public float ArcherCost = 100;
     public Text ArcherCostinfo;
     public Text ArcherLevelinfo;
     public Text NowMoney;
     public GameObject warningpanel;
     GoldManager goldManager;
+    LvupManager unit;
 
     public void ArcherUpgrade(){
         ArcherCostinfo.text = ArcherCost.ToString();
@@ -23,7 +24,7 @@ public class LvupManager : MonoBehaviour
         if (goldManager.gold >= ArcherCost){
             goldManager.gold -= ArcherCost;
             ArcherLevel += 1;
-            ArcherCost += 150;
+            ArcherCost += 150f;
             ArcherCostinfo.text = ArcherCost.ToString();
             ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         }
