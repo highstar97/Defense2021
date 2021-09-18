@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     private int layerMask;
     Vector3 pos2;
     // Start is called before the first frame update
-
     void Start()
     {
         layerMask = 1 << 8;

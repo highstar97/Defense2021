@@ -42,7 +42,7 @@ namespace Defense2021
             animator.SetBool("isCollision", true);
             animator.SetBool("isEnemy", true);
             animator.SetTrigger("isAttack");
-            /*
+            Stats collisionstat = collision.gameObject.GetComponent<Stats>();
             if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
             {
                 animator.SetBool("isCollision", true);
@@ -50,11 +50,9 @@ namespace Defense2021
             }
             else
             {
-                Stats bulletatk;
-                bulletatk = collision.gameObject.GetComponent<Stats>();
-                UnitStat.CurHp -= bulletatk.ATK;
+                UnitStat.CurHp -= collisionstat.ATK;
             }
-            */
+            
         }
         void OnCollisionStay(Collision other)
         {
@@ -77,19 +75,22 @@ namespace Defense2021
             {
 
             }*/
-            if(otherani.GetCurrentAnimatorStateInfo(0).IsName("Attack01") && check)
+            if(other.gameObject.tag != "Attack" && other.gameObject.tag != ThisUnit.gameObject.tag)
             {
-                UnitStat.CurHp -= otherstat.ATK;
-                HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
-                check = false;
-                StartCoroutine(WaitForIt());
+                if (otherani.GetCurrentAnimatorStateInfo(0).IsName("Attack01") && check)
+                {
+                    UnitStat.CurHp -= otherstat.ATK;
+                    HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
+                    check = false;
+                    StartCoroutine(WaitForIt());
+                }
             }
+            
 
         }
 
         IEnumerator WaitForIt()
         {
-
             yield return new WaitForSeconds(unitspd);
             check = true;
         }

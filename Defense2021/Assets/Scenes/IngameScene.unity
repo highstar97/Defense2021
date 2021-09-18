@@ -17817,22 +17817,32 @@ PrefabInstance:
     - target: {fileID: -4857534388666741693, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2201709962535867449, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201709962535867449, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2201709962535867449, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7045808521439110464, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
       propertyPath: m_Name
       value: Druid_Polyart_MaskTint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7045808521439110464, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
+      propertyPath: m_TagString
+      value: OurTeam
       objectReference: {fileID: 0}
     - target: {fileID: 7047205890157614958, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
@@ -21108,7 +21118,7 @@ PrefabInstance:
     - target: {fileID: 3137216058117666095, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
       propertyPath: ATKspd
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3137388802065661673, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
@@ -21124,6 +21134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137459652504114943, guid: 9cabb479d47504dddb601bc2b87b1b76,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3137957681688915037, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
