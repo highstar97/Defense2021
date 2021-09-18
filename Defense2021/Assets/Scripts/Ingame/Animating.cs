@@ -42,7 +42,7 @@ namespace Defense2021
             animator.SetBool("isCollision", true);
             animator.SetBool("isEnemy", true);
             animator.SetTrigger("isAttack");
-            Stats collisionstat = collision.gameObject.GetComponent<Stats>();
+            
             if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
             {
                 animator.SetBool("isCollision", true);
@@ -50,7 +50,10 @@ namespace Defense2021
             }
             else
             {
-                UnitStat.CurHp -= collisionstat.ATK;
+                Stats bulletatk;
+                bulletatk = collision.gameObject.GetComponent<Stats>();
+                UnitStat.CurHp -= bulletatk.ATK;
+                HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
             }
             
         }

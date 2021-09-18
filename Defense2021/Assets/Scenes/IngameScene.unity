@@ -17816,6 +17816,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4857534388666741693, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
+      propertyPath: thisunit
+      value: 
+      objectReference: {fileID: 1778757546}
+    - target: {fileID: -4857534388666741693, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -17834,10 +17839,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4404502964049286397, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
+      propertyPath: ATK
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404502964049286397, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
+      propertyPath: ATKspd
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7045808521439110464, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
       propertyPath: m_Name
       value: Druid_Polyart_MaskTint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7045808521439110464, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7045808521439110464, guid: 9d2b1b0dd52d94b4f96269fcd8aa8007,
         type: 3}
@@ -21068,12 +21088,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837317408437906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8995e618be0733841951062d849682f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 541439559286600449, guid: acc3c995cf4578c40960d37b2752015e, type: 3}
+  thisunit: {fileID: 0}
   pos: {fileID: 76518338}
   spdstat: {fileID: 1837317408437910}
 --- !u!114 &1837317408437910 stripped
@@ -21118,7 +21139,7 @@ PrefabInstance:
     - target: {fileID: 3137216058117666095, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
       propertyPath: ATKspd
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3137388802065661673, guid: 9cabb479d47504dddb601bc2b87b1b76,
         type: 3}
@@ -21322,7 +21343,7 @@ PrefabInstance:
     - target: {fileID: 7895784642047968476, guid: 5b13c75443eb64746b19edd9bdfa7c95,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7895784642047968477, guid: 5b13c75443eb64746b19edd9bdfa7c95,
         type: 3}
