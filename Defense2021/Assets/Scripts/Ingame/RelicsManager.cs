@@ -13,6 +13,9 @@ public class RelicsManager : MonoBehaviour
     public GameObject BoomerangRelic;
     public GameObject TicketRelic;
     public GameObject BookRelic;
+    public GameObject WandRelic;
+    public GameObject BoxRelic;
+    public GameObject SpearRelic;
     public GameObject ClockRelic;
     public GameObject ThrowingStarRelic;
     public GameObject StarRelicActiveAnimation;
@@ -28,6 +31,9 @@ public class RelicsManager : MonoBehaviour
     public bool Appleset = false;
     public bool Boomerangset = false;
     public bool Ticketset = false;
+    public bool Boxset = false;
+    public bool Wandset = false;
+    public bool Spearset = false;
     public bool Starset = false;
     public bool Bookset = false;
     public bool ThrowingStarset = false;
@@ -69,6 +75,36 @@ public class RelicsManager : MonoBehaviour
             Appleset = false;
         }
     }
+    public void WandRelicEnable()
+    {
+        if (WandRelic.activeSelf == true && Wandset == false)
+        {
+            if (stats.melee == false)
+                stats.ATK *= 1.5f;
+            Wandset = true;
+        }
+        else if (WandRelic.activeSelf == false && Wandset == true)
+        {
+            if (stats.melee == false)
+                stats.ATK /= 1.5f;
+            Wandset = false;
+        }
+    }
+    public void SpearRelicEnable()
+    {
+        if (SpearRelic.activeSelf == true && Spearset == false)
+        {
+            if (stats.melee == true)
+                stats.ATK *= 1.5f;
+            Spearset = true;
+        }
+        else if (SpearRelic.activeSelf == false && Spearset == true)
+        {
+            if (stats.melee == true)
+                stats.ATK /= 1.5f;
+            Spearset = false;
+        }
+    }
     public void ShieldRelicEnable()
     {
         if (ShieldRelic.activeSelf == true && Shieldset == false)
@@ -80,6 +116,19 @@ public class RelicsManager : MonoBehaviour
         {
             stats.Armor -= 50;
             Shieldset = false;
+        }
+    }
+    public void BoxRelicEnable()
+    {
+        if (BoxRelic.activeSelf == true && Boxset == false)
+        {
+            
+            Boxset = true;
+        }
+        else if (BoxRelic.activeSelf == false && Boxset == true)
+        {
+            
+            Boxset = false;
         }
     }
 

@@ -9,6 +9,7 @@ public class Stats : MonoBehaviour
     public float ATK;
     public float ATKspd;
     public float Armor;
+    public bool melee;
     public bool invincible=false;
     
 
