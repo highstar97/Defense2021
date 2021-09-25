@@ -5,18 +5,28 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject bullet;
+    public GameObject thisunit;
     public Transform pos;
     public Stats spdstat;
+    Stats atk;
+    Stats stat;
     private float curtime;
     private RaycastHit hit;
     private int layerMask;
     Vector3 pos2;
     // Start is called before the first frame update
-
+    void Awake()
+    {
+        atk = bullet.GetComponent<Stats>();
+        stat = thisunit.GetComponent<Stats>();
+        atk.ATK = stat.ATK;
+        atk.ATKspd = stat.ATKspd;
+    }
     void Start()
     {
         layerMask = 1 << 8;
-        pos2 = transform.position + new Vector3(0, 5f, 0);
+        pos2 = transform.position + new Vector3(0, 10f, 0);
+
     }
 
     // Update is called once per frame
@@ -32,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(pos2, transform.forward * 1000f, Color.red); ;
+            Debug.DrawRay(pos2, transform.forward * 1000f, Color.red);
         }
         curtime -= Time.deltaTime;
     }

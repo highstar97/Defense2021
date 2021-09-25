@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  bulletstat: {fileID: 0}
 --- !u!114 &710267740181289466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,4 +199,4 @@ MonoBehaviour:
   MaxHp: 0
   CurHp: 0
   ATK: 10
-  ATKspd: 0
+  ATKspd: 10

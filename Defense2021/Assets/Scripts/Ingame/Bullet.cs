@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    Stats bulletstat;
+    public Stats bulletstat;
     void Awake()
     {
         bulletstat = GetComponent<Stats>();
