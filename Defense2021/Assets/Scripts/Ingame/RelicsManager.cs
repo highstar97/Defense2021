@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class RelicsManager : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class RelicsManager : MonoBehaviour
     public GameObject TicketRelic;
     public GameObject BookRelic;
     public GameObject WandRelic;
+    public GameObject RoseRelic;
     public GameObject BoxRelic;
     public GameObject SpearRelic;
+    public GameObject LeafRelic;
     public GameObject ClockRelic;
     public GameObject ThrowingStarRelic;
     public GameObject StarRelicActiveAnimation;
@@ -34,8 +37,10 @@ public class RelicsManager : MonoBehaviour
     public bool Boxset = false;
     public bool Wandset = false;
     public bool Spearset = false;
+    public bool Roseset = false;
     public bool Starset = false;
     public bool Bookset = false;
+    public bool Leafset = false;
     public bool ThrowingStarset = false;
     public bool Dragonballset = false;
     public bool CanUse = true;
@@ -43,7 +48,9 @@ public class RelicsManager : MonoBehaviour
     public bool CanUse2 = true;
     public bool IsActive2 = false;
     public float tempHp;
-  
+    public Text temp1;
+    public int round=1;
+
     public void Regeneration()
     {
         stats.CurHp += 5;
@@ -60,6 +67,22 @@ public class RelicsManager : MonoBehaviour
         {
             goldmanager.GoldColor -= 1;
             Goldset = false;
+        }
+    }
+    public void LeafRelicEnable()
+    {
+        if (LeafRelic.activeSelf == true && Leafset == false)
+        {
+            InvokeRepeating("Regeneration", 0, 1);
+            stats.MaxHp *= 1.2f;
+            stats.CurHp = stats.MaxHp;
+            Leafset = true;
+        }
+        else if (LeafRelic.activeSelf == false && Leafset == true)
+        {
+            CancelInvoke("Regeneration");
+            stats.MaxHp /= 1.2f;
+            Leafset = false;
         }
     }
     public void AppleRelicEnable()
@@ -109,25 +132,61 @@ public class RelicsManager : MonoBehaviour
     {
         if (ShieldRelic.activeSelf == true && Shieldset == false)
         {
-            stats.Armor += 50;
+            stats.Armor += 50f;
             Shieldset = true;
         }
         else if (ShieldRelic.activeSelf == false && Shieldset == true)
         {
-            stats.Armor -= 50;
+            stats.Armor -= 50f;
             Shieldset = false;
+        }
+    }
+    public void RoseRelicEnable()
+    {
+        if (RoseRelic.activeSelf == true && Roseset == false)
+        {
+            stats.ATK += 5*round;
+            stats.Armor += 5f*round;
+            stats.ATKspd *= (1.1f * round);
+            Roseset = true;
+        }
+        else if (RoseRelic.activeSelf == false && Roseset == true)
+        {
+            stats.ATK -= 5 * round;
+            stats.Armor -= 5f * round;
+            stats.ATKspd /= (1.1f * round);
+            Roseset = false;
         }
     }
     public void BoxRelicEnable()
     {
+        System.Random rand = new System.Random();
+        int index = rand.Next(1, 6);//수정 필요
+
         if (BoxRelic.activeSelf == true && Boxset == false)
         {
-            
+            //System.Random rand = new System.Random();
+            //int index = rand.Next(1, 6);
+            switch (index)
+            {
+                case (1): stats.Armor += 50; temp1.text = "armor"; break;
+                case (2): stats.ATK *= 1.5f; temp1.text = "atk"; break;
+                case (3): goldmanager.GoldColor += 1; temp1.text = "gold"; break;
+                case (4): stats.ATKspd *= 1.5f; temp1.text = "spd"; break;
+                case (5): InvokeRepeating("Regeneration", 0, 1); temp1.text = "regen"; break;
+            }
             Boxset = true;
         }
         else if (BoxRelic.activeSelf == false && Boxset == true)
         {
-            
+            switch (index)
+            {
+                case (1): stats.Armor -= 50; break;
+                case (2): stats.ATK /= 1.5f; break;
+                case (3): goldmanager.GoldColor -= 1; break;
+                case (4): stats.ATKspd /= 1.5f; break;
+                case (5): CancelInvoke("Regeneration"); break;
+            }
             Boxset = false;
         }
     }
@@ -315,6 +374,11 @@ public class RelicsManager : MonoBehaviour
         TicketRelicEnable();
         BookEnable();
         ThrowingStarEnable();
-        
+        BoxRelicEnable();
+        SpearRelicEnable();
+        WandRelicEnable();
+        ShieldRelicEnable();
+        LeafRelicEnable();
+        RoseRelicEnable();
     }
 }
