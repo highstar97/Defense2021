@@ -6,7 +6,6 @@ using System;
 
 public class RelicsManager : MonoBehaviour
 {
-
     public GameObject GoldRelic;
     public GameObject SwordRelic;
     public GameObject ShieldRelic;
@@ -357,7 +356,7 @@ public class RelicsManager : MonoBehaviour
     void Start()
     {
         goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
-        stats = GameObject.Find("OurTeam").GetComponent<Stats>();
+        //stats = GameObject.Find("OurTeam").GetComponent<Stats>();
         lvmanager = GameObject.Find("Lv up Manager").GetComponent<LvupManager>();
 
     }

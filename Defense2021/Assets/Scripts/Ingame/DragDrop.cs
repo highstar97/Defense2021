@@ -44,7 +44,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 if (Physics.Raycast(ray, out hit, 10000f))
                 {
                     Vector3 targetPos = new Vector3(hit.point.x, 0f, hit.point.z);
-                    GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.identity);
+                    GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.Euler(0, 90f, 0));
                     goldManager.gold -= goldManager.Enemyprice;
                 }
             }

@@ -20,13 +20,14 @@ public class RoundManager : MonoBehaviour
          {
              if (enableSpawn)
              {
-                row -= 10f;
-                GameObject enemy = (GameObject)Instantiate(Enemy, new Vector3(500f, 0f, row), Quaternion.identity);
+                row -= 100f;
+                //GameObject enemy = (GameObject)Instantiate(Enemy, new Vector3(500f, 0f, row), Quaternion.identity);
+                GameObject enemy = (GameObject)Instantiate(Enemy, new Vector3(500f, 0f, row), Quaternion.Euler(0,-90f,0));
                 EnemyCount += 1;
                 RemainEnemyCount += 1;
             }
          }
-       
+        row = 5f;
 
     }
     // Start is called before the first frame update
@@ -40,7 +41,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EnemyCount > 30)
+        if (EnemyCount > 300)
         {
             CancelInvoke("SpawnEnemy");
             EndRound = true;

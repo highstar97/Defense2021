@@ -10,7 +10,7 @@ public class GoldManager : MonoBehaviour
     public float gold = 0;
     public GameObject text_gold;
     public int GoldColor = 0;
-    public float Enemyprice = 300;
+    public float Enemyprice = 100f;
     RelicsManager relicsmanager;
 
 
