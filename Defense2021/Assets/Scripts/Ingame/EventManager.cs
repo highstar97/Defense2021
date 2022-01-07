@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
+    int count = 0;
     int NumofEvent = 12;
     [SerializeField] Text Title;
     [SerializeField] Text Situation;
@@ -44,6 +45,11 @@ public class EventManager : MonoBehaviour
     }
     public void EventOccur(){
         int x;
+        if(count == NumofEvent)
+        {
+            print("All Event Used!");
+            return;
+        }
         do{
             x = Random.Range(0,NumofEvent); // [0,NumofEvent)
         }while(EventSituations[x].GetIsUsed());
@@ -71,5 +77,6 @@ public class EventManager : MonoBehaviour
             Choice3.SetActive(false);
             Choice2.transform.GetChild(0).GetComponent<Text>().text = EventSituations[x].GetOption()[0];
         }
+        count++;
     }
 }
