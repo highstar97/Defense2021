@@ -32,19 +32,6 @@ namespace Defense2021
         {
             animator.SetBool("isCollision", true);
             animator.SetBool("isEnemy", true);
-
-            /*if(collision.gameObject.tag != "Attack" && collision.gameObject.tag != ThisUnit.gameObject.tag)
-            {
-                animator.SetBool("isCollision", true);
-                animator.SetBool("isEnemy", true);
-            }
-            else
-            {
-                Stats bulletatk;
-                bulletatk = collision.gameObject.GetComponent<Stats>();
-                UnitStat.CurHp -= bulletatk.ATK;
-            }*/
-
         }
         void OnCollisionExit(Collision collision)
         {
