@@ -12,7 +12,6 @@ public class GoldManager : MonoBehaviour
     public int GoldColor = 0;
     RelicsManager relicsmanager;
 
-
     public void AddGold(){
         int increase = 1;
         if (GameObject.Find("Buff Manager").GetComponent<BuffManager>().IsActive){

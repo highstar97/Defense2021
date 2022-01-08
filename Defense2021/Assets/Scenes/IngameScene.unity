@@ -4581,8 +4581,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2061390905}
-        m_MethodName: HumanKingSkill
+      - m_Target: {fileID: 2061390906}
+        m_MethodName: UseKingSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5225,7 +5225,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buff
+  m_Text: "\uBC84\uD504 \uBAA9\uB85D"
 --- !u!222 &503622227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22212,6 +22212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2061390904}
   - component: {fileID: 2061390905}
+  - component: {fileID: 2061390906}
   m_Layer: 5
   m_Name: Buff Manager
   m_TagString: Untagged
@@ -22245,9 +22246,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061390903}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c786767245130946900dd2bc6f70add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanUse: 1
+  IsActive: 0
+  KingSkillButton: {fileID: 436860840}
+  Bufftext: {fileID: 684490092}
+  KingSkillActiveAnimation: {fileID: 126715532}
+--- !u!114 &2061390906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061390903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c5e6ef5d763e24d860055de7d314fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CanUse: 1

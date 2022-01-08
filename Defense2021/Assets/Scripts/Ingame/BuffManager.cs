@@ -4,35 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BuffManager : MonoBehaviour
 {
-    public bool CanUse = true;
+    protected bool CanUse = true;
     public bool IsActive = false;
+    private string King = "Human";    
     public Button KingSkillButton;
     public Text Bufftext;
     public GameObject KingSkillActiveAnimation;
-    GoldManager goldmanager;
-    public void HumanKingSkill()
+
+    public virtual void UseKingSkill()
     {
-        if (CanUse && IsActive == false)
-        {
-            KingSkillActiveAnimation.SetActive(true);
-            Bufftext.text = "HumanKing's Buff(Gold x5)";
-            KingSkillButton.transform.GetChild(1).GetComponent<Text>().text = "Active";
-            IsActive = true;
-            goldmanager.GoldColor += 1;
-            Invoke("DisableHumanKingSkill", 5f);
-        }
+
     }
 
-    public void DisableHumanKingSkill()
+    public virtual void DisableKingSkill()
     {
-        goldmanager.GoldColor -= 1;
-        KingSkillActiveAnimation.SetActive(false);
-        IsActive = false;
-        CanUse = false;
-        Bufftext.text = "";
-        KingSkillButton.transform.GetChild(0).gameObject.SetActive(true);
-        KingSkillButton.transform.GetChild(1).GetComponent<Text>().text = "King Skill";
-        InvokeRepeating("CoolTime", Time.deltaTime, Time.deltaTime);
+        
     }
 
     public void CoolTime()
@@ -46,10 +32,20 @@ public class BuffManager : MonoBehaviour
         }
         KingSkillButton.transform.GetChild(0).GetComponent<Image>().fillAmount -= 0.1f * Time.deltaTime;
     }
+    private void EnableKingScript()
+    {
+        if(King == "Human")
+        {
+            this.GetComponent<HumanKingBuff>().enabled = true;
+        }
+        else if(King == "Elf")
+        {
+            ;
+        }   
+    }
+
     void Start()
     {
-        goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
-
-
+        EnableKingScript();
     }
 }
