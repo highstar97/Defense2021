@@ -11049,7 +11049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4884781972206908, guid: 3d5764d3cca272942b5087884ae75b75, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4884781972206908, guid: 3d5764d3cca272942b5087884ae75b75, type: 3}
       propertyPath: m_LocalScale.y
@@ -14347,6 +14347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1294514620}
+  - component: {fileID: 1294514621}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -14363,7 +14364,7 @@ Transform:
   m_GameObject: {fileID: 1294514619}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -250}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 4, z: 3}
   m_Children:
   - {fileID: 1722886379}
   - {fileID: 1791461642}
@@ -14377,6 +14378,19 @@ Transform:
   m_Father: {fileID: 1742053498}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &1294514621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294514619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 70}
+  m_Center: {x: 0, y: 0, z: 30}
 --- !u!1 &1302504852
 GameObject:
   m_ObjectHideFlags: 0
@@ -23337,6 +23351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895784642047968467, guid: 5b13c75443eb64746b19edd9bdfa7c95,
+        type: 3}
+      propertyPath: MaxHp
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7896482829958413894, guid: 5b13c75443eb64746b19edd9bdfa7c95,
         type: 3}
