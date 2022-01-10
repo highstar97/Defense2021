@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Defense2021
 {
@@ -8,6 +9,7 @@ namespace Defense2021
     {
         public GameObject ThisUnit;
         Stats UnitStat;
+        public GameObject HealthBar;
         Animator animator;
         bool check = true;
         void Awake()
@@ -18,6 +20,7 @@ namespace Defense2021
             animator.SetBool("isCollision", false);
             animator.SetBool("isEnemy", false);
         }
+
         void Update()
         {
             if (UnitStat.CurHp <= 0)
@@ -44,10 +47,15 @@ namespace Defense2021
             Stats otherstat;
             otherani = other.gameObject.GetComponent<Animator>();
             otherstat = other.gameObject.GetComponent<Stats>();
-            if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
+            
+            //if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
+            if(Vector3.Distance(ThisUnit.transform.position, other.transform.position) <= 0.5f && check)
             {
+                animator.SetBool("isCollision", true);
+                animator.SetBool("isEnemy", true);
                 check = false;
                 UnitStat.CurHp -= otherstat.ATK;
+                HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
                 StartCoroutine(WaitForIt(otherstat.ATKspd));
             }
 

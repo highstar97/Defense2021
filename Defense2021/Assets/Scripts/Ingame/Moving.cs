@@ -21,6 +21,11 @@ public class Moving : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         isOkay = false;
+    }
+    void OnCollisionStay(Collision collision)
+    {
+        if(Vector3.Distance(transform.position, collision.transform.position) <= 0.5f)
+            isOkay = false;
        
     }
     void OnCollsionExit(Collision collision)
