@@ -7,39 +7,47 @@ public class LvupManager : MonoBehaviour
 {
     public Button ArcherUpgradeButton;
     public int ArcherLevel = 1;
-    public int ArcherCost = 100;
+    public float ArcherCost = 100;
     public Text ArcherCostinfo;
     public Text ArcherLevelinfo;
     public Text NowMoney;
     public GameObject warningpanel;
     GoldManager goldManager;
+    LvupManager unit;
 
-    public void ArcherUpgrade(){
+    public void ArcherUpgrade()
+    {
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
 
     }
-    public void AddArcherCost(){
-        if (goldManager.gold >= ArcherCost){
+    public void AddArcherCost()
+    {
+        if (goldManager.gold >= ArcherCost)
+        {
             goldManager.gold -= ArcherCost;
             ArcherLevel += 1;
-            ArcherCost += 150;
+            ArcherCost += 150f;
             ArcherCostinfo.text = ArcherCost.ToString();
             ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         }
-        else{
+        else
+        {
             OpenWarning();
         }
     }
-    public void OpenWarning(){
-        if(warningpanel.activeSelf == false){
+    public void OpenWarning()
+    {
+        if (warningpanel.activeSelf == false)
+        {
             warningpanel.SetActive(true);
-            Invoke("enablewarning",1f);
+            Invoke("enablewarning", 1f);
         }
-        else{
+        else
+        {
             CancelInvoke("enablewarning");
             warningpanel.SetActive(true);
-            Invoke("enablewarning",1f);
+            Invoke("enablewarning", 1f);
         }
     }
     public void enablewarning()
@@ -53,7 +61,8 @@ public class LvupManager : MonoBehaviour
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
     }
-    void Update(){
+    void Update()
+    {
         NowMoney.GetComponent<Text>().text = "현재 돈 : " + goldManager.gold + " G";
     }
 }
