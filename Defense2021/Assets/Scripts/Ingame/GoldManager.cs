@@ -14,7 +14,7 @@ public class GoldManager : MonoBehaviour
 
     public void AddGold(){
         int increase = 1;
-        if (GameObject.Find("Buff Manager").GetComponent<BuffManager>().IsActive){
+        if (GameObject.Find("Buff Manager").GetComponent<HumanKingBuff>().IsActive){
             increase *= 5;
         }
         if (relicsmanager.Goldset)

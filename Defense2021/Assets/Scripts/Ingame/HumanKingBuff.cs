@@ -37,5 +37,6 @@ public class HumanKingBuff : BuffManager
     void Start()
     {
         goldmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
+        KingSkillButton.onClick.AddListener(UseKingSkill);
     }
 }
