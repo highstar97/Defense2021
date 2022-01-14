@@ -15,5 +15,4 @@ public class Turning : MonoBehaviour
     {
         p.transform.LookAt(other.transform);
     }
-
 }
