@@ -7,6 +7,9 @@ public class RoundManager : MonoBehaviour
 
     public GameObject Ourteam;
     public GameObject Enemy;
+    public GameObject EnemyKing;
+    public bool Enemykingenable = false;
+    bool EnemykingSet = false;
     public float row = 5f;
     bool enableSpawn = true;
     public int EnemyCount = 0;
@@ -30,6 +33,13 @@ public class RoundManager : MonoBehaviour
         row = 5f;
 
     }
+    void SpawnEnemyKing()
+    {
+        
+            GameObject enemyking = (GameObject)Instantiate(EnemyKing, new Vector3(300f, 0f, -200f), Quaternion.Euler(0, -90f, 0));
+            
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,15 +51,23 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EnemyCount > 300)
+        if ((EnemyCount > 10 && Enemykingenable == false) && EnemykingSet == false )
         {
             CancelInvoke("SpawnEnemy");
+            SpawnEnemyKing();
+            EnemykingSet = true;
             EndRound = true;
         }
+        else if (Enemykingenable == true && EnemykingSet == true)
+        {
+            EnemykingSet = false;
+        }
+
         if (EndRound == true && RemainEnemyCount == 0)
         {
             datemanager.date += 1;
         }
+       
 
     }
 }
