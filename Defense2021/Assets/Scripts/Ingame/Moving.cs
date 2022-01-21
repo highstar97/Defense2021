@@ -9,11 +9,7 @@ public class Moving : MonoBehaviour
     private bool isOkay = true;
     public float entitytime, pos_x, pos_y, pos_z;
     public GameObject thisunit;
-    Quaternion tmp;
-    private void Awake()
-    {
-        tmp = transform.rotation;
-    }
+    
     void Update()
     {
         if(isOkay)
@@ -25,17 +21,11 @@ public class Moving : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         isOkay = false;
+       
     }
-    void OnCollisionStay(Collision collision)
+    void OnCollsionExit(Collision collision)
     {
-        if(Vector3.Distance(transform.position, collision.transform.position) <= 0.5f)
-            isOkay = false;
-        Stats col_st = collision.gameObject.GetComponent<Stats>();
-        if (col_st.CurHp <= 0)
-        {
-            isOkay = true;
-            transform.rotation = tmp;
-        }
-
+        Debug.Log("Collision End");
+        isOkay = true;
     }
 }
