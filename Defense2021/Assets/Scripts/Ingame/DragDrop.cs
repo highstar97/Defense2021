@@ -35,7 +35,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void Function_Instantiate()
     {
-        if (goldManager.gold >= 300)
+        if (goldManager.gold >= 10)
         {
             if (Input.GetMouseButtonUp(0))
             {
@@ -44,8 +44,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 if (Physics.Raycast(ray, out hit, 10000f))
                 {
                     Vector3 targetPos = new Vector3(hit.point.x, 0f, hit.point.z);
-                    GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.identity);
-                    goldManager.gold -= 300;
+                    GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.Euler(0, 90f, 0));
+                    goldManager.gold -= 10;
                 }
             }
         }
