@@ -16,6 +16,7 @@ public class Turning : MonoBehaviour
         if (gameObject.tag != other.gameObject.tag)
         {
             p.transform.LookAt(other.transform);
+
         }
     }  
 }
