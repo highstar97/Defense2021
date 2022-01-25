@@ -13,6 +13,9 @@ public class Turning : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        p.transform.LookAt(other.transform);
-    }
+        if (gameObject.tag != other.gameObject.tag)
+        {
+            p.transform.LookAt(other.transform);
+        }
+    }  
 }
