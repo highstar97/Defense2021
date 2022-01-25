@@ -306,6 +306,8 @@ MonoBehaviour:
   CurHp: 0
   ATK: 50
   ATKspd: 2
+  IsEnemy: 0
+  status: 0
 --- !u!114 &2035313762236331420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +323,7 @@ MonoBehaviour:
   entitytime: 1
   pos_x: 0
   pos_y: 0
-  pos_z: 0.6
+  pos_z: 0.3
   thisunit: {fileID: 2033485264364113670}
 --- !u!114 &2035313762236331421
 MonoBehaviour:

@@ -12,23 +12,41 @@ namespace Defense2021
         public GameObject HealthBar;
         Animator animator;
         bool check = true;
+        RoundManager roundmanager;
         void Awake()
         {
             UnitStat = GetComponent<Stats>();
             animator = GetComponent<Animator>();
             animator.SetBool("isDie", false);
             animator.SetFloat("AtkSpd", (float)UnitStat.ATKspd);
-        }
 
+        }
+        void Start()
+        {
+            roundmanager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        }
+        void Update()
+        {
+            
+        }
         void FixedUpdate()
         {
             HealthBar.GetComponent<Image>().fillAmount = UnitStat.CurHp / UnitStat.MaxHp;
 
-            if (UnitStat.CurHp <= 0)
+            if (UnitStat.CurHp <= 0 && UnitStat.IsEnemy == false)
             {
                 animator.SetBool("isDie", true);
                 Destroy(ThisUnit, 3.0f);
             }
+            else if ((UnitStat.CurHp <= 0 && UnitStat.IsEnemy == true) && UnitStat.status == true)
+            {
+                animator.SetBool("isDie", true);
+                Destroy(ThisUnit, 3.0f);
+                roundmanager.RemainEnemyCount -= 1;
+                UnitStat.status = false;
+               
+            }
+           
         }
         void OnCollisionEnter(Collision collision)
         {

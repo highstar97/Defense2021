@@ -9,9 +9,10 @@ public class DateManager : MonoBehaviour
     public GameObject text_date;
     void Start(){
         text_date = GameObject.Find("Text Date");
-        text_date.GetComponent<Text>().text = date.ToString() + " 일차...";
+        text_date.GetComponent<Text>().text = " Round " + date.ToString() ;
     }
     void Update(){
         //text_date.GetComponent<Text>().text = date.ToString() + " 일차...";
+        text_date.GetComponent<Text>().text = " Round " + date.ToString();
     }
 }

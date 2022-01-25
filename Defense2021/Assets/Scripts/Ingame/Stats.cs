@@ -8,6 +8,8 @@ public class Stats : MonoBehaviour
     public float CurHp;
     public float ATK;
     public float ATKspd;
+    public bool IsEnemy;
+    public bool status;
     void Start()
     {
         CurHp = MaxHp;

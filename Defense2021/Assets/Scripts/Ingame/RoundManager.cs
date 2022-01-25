@@ -8,6 +8,7 @@ public class RoundManager : MonoBehaviour
     public GameObject Ourteam;
     public GameObject Enemy;
     public GameObject EnemyKing;
+    public GameObject RoundEndpanel;
     public bool Enemykingenable = false;
     bool EnemykingSet = false;
     public float row = 5f;
@@ -15,11 +16,11 @@ public class RoundManager : MonoBehaviour
     public int EnemyCount = 0;
     public int RemainEnemyCount = 0;
     DateManager datemanager;
-    bool EndRound = true;
+    bool EndRound = false;
 
     void SpawnEnemy()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
             if (enableSpawn)
             {
@@ -51,10 +52,12 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((EnemyCount > 10 && Enemykingenable == false) && EnemykingSet == false)
+        if ((EnemyCount > 3 && Enemykingenable == false) && EnemykingSet == false)
         {
             CancelInvoke("SpawnEnemy");
             SpawnEnemyKing();
+            EnemyCount += 1;
+            RemainEnemyCount += 1;
             EnemykingSet = true;
             EndRound = true;
         }
@@ -63,8 +66,10 @@ public class RoundManager : MonoBehaviour
             EnemykingSet = false;
         }
 
-        if (EndRound == true && RemainEnemyCount == 0)
+        if ((EndRound == true && RemainEnemyCount == 0)&& datemanager.date < 2)
         {
+            RoundEndpanel.SetActive(true);
+            Invoke("enablewarning", 1);
             datemanager.date += 1;
         }
 

@@ -440,7 +440,7 @@ MonoBehaviour:
   entitytime: 1
   pos_x: 0
   pos_y: 0
-  pos_z: 1
+  pos_z: 0.3
   thisunit: {fileID: 6067465472466348621}
 --- !u!114 &6066392949353875869
 MonoBehaviour:
@@ -458,6 +458,8 @@ MonoBehaviour:
   CurHp: 0
   ATK: 10
   ATKspd: 1
+  IsEnemy: 1
+  status: 1
 --- !u!114 &6066392949353875866
 MonoBehaviour:
   m_ObjectHideFlags: 0
