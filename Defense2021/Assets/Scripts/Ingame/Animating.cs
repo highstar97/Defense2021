@@ -13,13 +13,13 @@ namespace Defense2021
         Animator animator;
         bool check = true;
         RoundManager roundmanager;
+        Turning tar;
         void Awake()
         {
             UnitStat = GetComponent<Stats>();
             animator = GetComponent<Animator>();
             animator.SetBool("isDie", false);
             animator.SetFloat("AtkSpd", (float)UnitStat.ATKspd);
-
         }
         void Start()
         {
@@ -63,6 +63,7 @@ namespace Defense2021
             if (otherstat.CurHp <= 0)
             {
                 animator.ResetTrigger("isAttack");
+                tar.chk = true;
                 return;
             }
             //if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)

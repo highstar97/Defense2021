@@ -5,7 +5,9 @@ using UnityEngine;
 public class Turning : MonoBehaviour
 {
     Collider range;
+    public bool chk = true;
     GameObject p;
+    public GameObject target;
     void Awake()
     {
         range = GetComponent<BoxCollider>();
@@ -13,10 +15,13 @@ public class Turning : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag != other.gameObject.tag)
+        if (gameObject.tag != other.gameObject.tag && chk)
         {
             p.transform.LookAt(other.transform);
-
+            target = other.gameObject;
+            chk = false;
         }
-    }  
+    }
 }
+
+

@@ -28,10 +28,10 @@ public class Moving : MonoBehaviour
     }
     void OnCollisionStay(Collision collision)
     {
-        if(Vector3.Distance(transform.position, collision.transform.position) <= 0.5f)
+        if(Vector3.Distance(transform.position, collision.transform.position) <= 0.5f && gameObject.tag != collision.gameObject.tag)
             isOkay = false;
         Stats col_st = collision.gameObject.GetComponent<Stats>();
-        if (col_st.CurHp <= 0)
+        if (col_st.CurHp <= 0 || !collision.gameObject)
         {
             isOkay = true;
             transform.rotation = tmp;
