@@ -10,6 +10,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Camera mainCamera;
     public GameObject pref;
     public GameObject waringpanel;
+    public GameObject waringpanel2;
     GoldManager goldManager;
 
     void Start()
@@ -44,8 +45,15 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 if (Physics.Raycast(ray, out hit, 10000f))
                 {
                     Vector3 targetPos = new Vector3(hit.point.x, 0f, hit.point.z);
-                    GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.Euler(0, 90f, 0));
-                    goldManager.gold -= 10;
+                    if ((targetPos.x > 100 && targetPos.x < 500) && (targetPos.z < -100 && targetPos.z > -300))
+                    {
+                        GameObject enemy = (GameObject)Instantiate(pref, targetPos, Quaternion.Euler(0, 90f, 0));
+                        goldManager.gold -= 10;
+                    }
+                    else {
+                        waringpanel2.SetActive(true);
+                        Invoke("enablewarning2", 1);
+                    }
                 }
             }
         }
@@ -58,5 +66,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void enablewarning()
     {
         waringpanel.SetActive(false);
+    }
+    public void enablewarning2()
+    {
+        waringpanel2.SetActive(false);
     }
 }
