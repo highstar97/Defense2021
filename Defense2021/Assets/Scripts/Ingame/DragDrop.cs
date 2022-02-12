@@ -52,7 +52,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     }
                     else {
                         waringpanel2.SetActive(true);
-                        Invoke("enablewarning2", 1);
+                        Invoke("Disablewarning2", 1);
                     }
                 }
             }
@@ -60,14 +60,14 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         else
         {
             waringpanel.SetActive(true);
-            Invoke("enablewarning", 1);
+            Invoke("Disablewarning", 1);
         }
     }
-    public void enablewarning()
+    public void Disablewarning()
     {
         waringpanel.SetActive(false);
     }
-    public void enablewarning2()
+    public void Disablewarning2()
     {
         waringpanel2.SetActive(false);
     }
