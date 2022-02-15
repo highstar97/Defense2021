@@ -48,6 +48,7 @@ namespace Defense2021
             }
            
         }
+
         void OnCollisionEnter(Collision collision)
         {
         }
@@ -63,8 +64,6 @@ namespace Defense2021
             if (otherstat.CurHp <= 0)
             {
                 animator.ResetTrigger("isAttack");
-                tar.chk = true;
-                return;
             }
             //if (otherani.GetBool("isCollision") && otherani.GetBool("isEnemy") && check)
             if (other.gameObject.tag != ThisUnit.gameObject.tag)
