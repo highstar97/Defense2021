@@ -20,17 +20,19 @@ public class Turning : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
+        if (target == null)
+            target = other.gameObject;
         Stats o_st = other.gameObject.GetComponent<Stats>();
+
         if (o_st.CurHp <= 0)
         {
             p.transform.rotation = tmp;
-            if (other.gameObject != target)
-                target = other.gameObject;
+            if (other.gameObject == null)
+                target = null;
         }
-        if (gameObject.tag != other.gameObject.tag && target == null)
+        if (gameObject.tag != other.gameObject.tag)
         {
             p.transform.LookAt(other.transform);
-            target = other.gameObject;
         }
     }
     void OnTriggerExit(Collider other)

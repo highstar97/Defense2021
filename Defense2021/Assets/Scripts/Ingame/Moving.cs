@@ -9,10 +9,10 @@ public class Moving : MonoBehaviour
     private bool isOkay = true;
     public float entitytime, pos_x, pos_y, pos_z;
     public GameObject thisunit;
-    //Quaternion tmp;
+    Quaternion tmp;
     private void Awake()
     {
-        //tmp = transform.rotation;
+        tmp = transform.rotation;
     }
     void Update()
     {
@@ -29,7 +29,7 @@ public class Moving : MonoBehaviour
     void cleaning()
     {
         isOkay = true;
-        //transform.rotation = tmp;
+        transform.rotation = tmp;
     }
     void OnCollisionStay(Collision collision)
     {

@@ -36,12 +36,12 @@ namespace Defense2021
             if (UnitStat.CurHp <= 0 && UnitStat.IsEnemy == false)
             {
                 animator.SetBool("isDie", true);
-                Destroy(ThisUnit, 3.0f);
+                Destroy(ThisUnit, 0.5f);
             }
             else if ((UnitStat.CurHp <= 0 && UnitStat.IsEnemy == true) && UnitStat.status == true)
             {
                 animator.SetBool("isDie", true);
-                Destroy(ThisUnit, 3.0f);
+                Destroy(ThisUnit, 0.5f);
                 roundmanager.RemainEnemyCount -= 1;
                 UnitStat.status = false;
                
