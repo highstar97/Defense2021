@@ -13,7 +13,7 @@ namespace Defense2021
         Animator animator;
         bool check = true;
         RoundManager roundmanager;
-        Turning tar;
+        //Turning tar;
         void Awake()
         {
             UnitStat = GetComponent<Stats>();
