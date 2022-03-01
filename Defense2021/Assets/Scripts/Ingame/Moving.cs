@@ -9,10 +9,10 @@ public class Moving : MonoBehaviour
     private bool isOkay = true;
     public float entitytime, pos_x, pos_y, pos_z;
     public GameObject thisunit;
-    //Quaternion tmp;
+    Quaternion tmp;
     private void Awake()
     {
-        //tmp = transform.rotation;
+        tmp = transform.rotation;
     }
     void Update()
     {
@@ -29,14 +29,14 @@ public class Moving : MonoBehaviour
     void cleaning()
     {
         isOkay = true;
-        //transform.rotation = tmp;
+        transform.rotation = tmp;
     }
     void OnCollisionStay(Collision collision)
     {
         if(Vector3.Distance(transform.position, collision.transform.position) <= 0.5f && gameObject.tag != collision.gameObject.tag)
             isOkay = false;
         Stats col_st = collision.gameObject.GetComponent<Stats>();
-        if (col_st.CurHp <= 0)
+        if (col_st.CurHp <= 0 || collision == null)
         {
             cleaning();
         }
