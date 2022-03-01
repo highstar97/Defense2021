@@ -13,6 +13,7 @@ public class LvupManager : MonoBehaviour
     public Text NowMoney;
     public GameObject warningpanel;
     GoldManager goldManager;
+    Stats stats;
 
     public void ArcherUpgrade(){
         ArcherCostinfo.text = ArcherCost.ToString();
@@ -26,6 +27,7 @@ public class LvupManager : MonoBehaviour
             ArcherCost += 150;
             ArcherCostinfo.text = ArcherCost.ToString();
             ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
+            stats.ATK += 10;
         }
         else{
             OpenWarning();
@@ -52,6 +54,7 @@ public class LvupManager : MonoBehaviour
         ArcherLevelinfo.text = "궁수 Lv. " + ArcherLevel.ToString();
         ArcherCostinfo.text = ArcherCost.ToString();
         ArcherUpgradeButton.onClick.AddListener(AddArcherCost);
+        stats = GameObject.Find("OurTeam").GetComponent<Stats>();
     }
     void Update(){
         NowMoney.GetComponent<Text>().text = "현재 돈 : " + goldManager.gold + " G";
